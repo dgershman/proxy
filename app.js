@@ -2,10 +2,10 @@ var https = require('https'),
     httpProxy = require('http-proxy');
 
 proxy = httpProxy.createProxyServer({
-  target: 'https://tomato.na-bmlt.org',
+  target: 'https://' + process.env["PROXY_TARGET"],
   agent  : https.globalAgent,
   headers: {
-    host: 'tomato.na-bmlt.org'
+    host: process.env["PROXY_TARGET"]
   }
 }).listen(8011);
 
